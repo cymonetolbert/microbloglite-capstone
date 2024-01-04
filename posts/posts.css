@@ -1,1 +1,23 @@
 /* Posts Page CSS */
+body {
+    /* margin: 0xp;
+    padding 0xp; */
+
+    /* width:100%;
+    height: 100vh; */
+    /* background-image: url(../images2/stevenUniverseVan.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background: rgb(248,42,88);
+background: radial-gradient(circle, rgba(248,42,88,0.46775206664697133) 0%, rgba(240,73,93,0.6638304980195203) 65%, rgba(255,176,0,1) 100%);
+}
+.card {
+    margin: auto;
+    margin-top: 5rem;
+    /* background-color:background: background: background: rgb(14,115,202); */
+    background: linear-gradient(90deg, rgba(14,115,202,10) 0%, rgba(252,174,74,1) 50%, rgba(255,40,112,10) 100%);
+}
+
+.blockquote-footer {
+    color: black
+}
