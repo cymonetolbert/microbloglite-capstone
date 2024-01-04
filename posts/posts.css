@@ -23,3 +23,9 @@ background: radial-gradient(circle, rgba(248,42,88,0.46775206664697133) 0%, rgba
     color: black
 }
 
+.form-select {
+    /* background-color: linear-gradient(90deg, rgba(14,115,202,10) 0%, rgba(252,174,74,1) 50%, rgba(255,40,112,10) 100%); */
+    --bs-body-bg: rgba(14,115,202,10);
+    --bs-border-color: rgba(14,115,202,10);
+}
+

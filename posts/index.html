@@ -1,6 +1,7 @@
 <!-- POSTS page -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +28,7 @@
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
+
 <body>
 
     <header>
@@ -35,29 +37,30 @@
 
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">🎇Universe🎇</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="/index.html">Posts
-                      <span class="visually-hidden">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="/profile/index.html">Profile</a>
-                  </li>
-                  <li class="nav-item">
-                    <!-- <a id="postLogout" class="nav-link " href="#">Log Out</a> -->
-                    <button id="postLogout">Logout</button>
-                  </li>
-                  <li class="nav-item">
+                <a class="navbar-brand" href="#">🎇Universe🎇</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/index.html">Posts
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/profile/index.html">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a id="postLogout" class="nav-link " href="#">Log Out</a> -->
+                            <button id="postLogout">Logout</button>
+                        </li>
+                        <li class="nav-item">
 
-              </div>
+                </div>
             </div>
-          </nav>
+        </nav>
 
     </header>
 
@@ -65,28 +68,39 @@
 
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="/images2/SU crew.jpg" class="d-block w-100" alt="SU crew">
-              </div>
-              <div class="carousel-item">
-                <img src="/images2/SU island.webp" class="d-block w-100" alt="island">
-              </div>
-              <div class="carousel-item">
-                <img src="/images2/stevenUniverseVan.jpeg" class="d-block w-100" alt="SU island">
-              </div>
+                <div class="carousel-item active">
+                    <img src="/images2/SU crew.jpg" class="d-block w-100" alt="SU crew">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images2/SU island.webp" class="d-block w-100" alt="island">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images2/stevenUniverseVan.jpeg" class="d-block w-100" alt="SU island">
+                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
             </button>
-          </div>
+        </div>
 
+        <div class="container w-25 mt-5">
+            <select id="select" class="form-select h-100 w-100" aria-label="">
+                <option value="none">Show All</option>
+                <!-- <option value="newToOld">Newest to Oldest</option>
+              <option value="oldToNew">Oldest to Newest</option> -->
+                <option value="mostLikes">Most to Least Likes</option>
+                <option value="leastLikes">Least to Most Likes</option>
+            </select>
+        </div>
 
-    <body class="center-content">
+        <!-- <body class="center-content"> -->
         <!-- <div class="card">
             <div class="card-header">
               Quote
@@ -99,7 +113,7 @@
             </div>
           </div> -->
 
-          <div id="posts"></div>
+        <div id="posts"></div>
     </main>
 
     <footer>
@@ -120,4 +134,5 @@
     <!-- Page-specific code -->
     <script src="./posts.js"></script>
 </body>
+
 </html>
