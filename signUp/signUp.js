@@ -8,7 +8,7 @@ function getData (event) {
     const form = event.target.elements
 
     if (form.password.value !== form.confirmPassword.value) {
-        alert("Please make sure your password and confirm password match! :D")
+        return alert("Please make sure your password and confirm password match! :D")
     }
 
     const newUserJSON = ({
@@ -29,6 +29,11 @@ function addUser (json) {
     }
     fetch ('http://microbloglite.us-east-2.elasticbeanstalk.com/api/users', options)
     .then (response => response.json())
-    .then (newUser => console.log(newUser))
+    .then (newUser => console.log(newUser), successmessage())
 }
 
+function successmessage () {
+    if (window.confirm('Congratulations! Your account has successfully been created! Hit "ok" to go login! Hit "cancel" to stay on this page')) {
+        window.location.href = `../index.html`
+    }
+}

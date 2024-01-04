@@ -1,0 +1,36 @@
+body {
+    background-image: url(../images/roseBackground.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+span {
+    /* --bs-heading-color: #4c1e7b */
+    --bs-heading-color: #424771
+}
+.card {
+    /* background-color:#bda6bf; */
+    background-color:#af95bc;
+    text-align: center;
+}
+
+h4 {
+    color: #6b68a2;
+    font-weight: bolder;
+}
+
+#signUpButton {
+    color:white; 
+    font-weight:bold; 
+    background-color:#6b68a2;
+    border-color: #bda6bf"
+}
+
+a {
+    color: black;
+    font-weight: 500;
+}
+
+p {
+    color: black;
+}
