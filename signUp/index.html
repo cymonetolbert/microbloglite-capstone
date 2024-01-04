@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +14,84 @@
 
     <link rel="stylesheet" href="./signUp.css">
     <link rel="stylesheet" href="../global.css">
-    <script src="./signUp.js"></script>
+    
 </head>
+
 <body>
-    <header></header>
-    <main></main>
+    <header>
+    </header>
+    <main>
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-xl-10">
+                        <div class="card" style="border-radius: 1rem;">
+                            <div class="row g-0">
+                                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                    <img src="../images/stevenUniverseThinking.gif" alt="steven universe thinking gif" class="pt-5"
+                                        style="border-bottom-left-radius: 1rem;">
+                                </div>
+                                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                    <div class="card-body p-4 p-lg-5 text-black">
+                                        <form id="signUpForm">
+                                            <div class="d-flex align-items-center mb-3 pb-1">
+                                                <span class="h1 fw-bold mb-0">Welcome to your MICROBLOG NETWORK</span>
+                                            </div>
+                                            <h4 class=" mb-3 pb-3" style="letter-spacing: 1px;">Create your
+                                                account here!</h4>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <input type="text" id="fullName"
+                                                            class="form-control form-control-lg"
+                                                            placeholder="First And Last Name"
+                                                            aria-label="First And Last Name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <input type="text" id="username"
+                                                            class="form-control form-control-lg" placeholder="Username"
+                                                            aria-label="Username">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-4 d-flex align-items-center">
+                                                    <div class="form-outline datepicker w-100">
+                                                        <input type="password" class="form-control form-control-lg"
+                                                            id="password" placeholder="Password" aria-label="Password">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <input type="password" id="confirmPassword"
+                                                            class="form-control form-control-lg"
+                                                            placeholder="Confirm Password"
+                                                            aria-label="Confirm Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pt-1 mb-4 text-center">
+                                                <button id="signUpButton" type="submit" class="btn btn-lg btn-block" 
+                                                role="button">Create Account!</button>
+                                            </div>
+                                            <div class="text-center">
+                                              <p class="mb-5 pb-lg-2" >Have a Account? <a href="../index.html">Login Here!</a></p>
+                                              <a href="#!">Terms of use.</a>
+                                              <a href="#!">Privacy policy</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <footer></footer>
+    <script src="./signUp.js"></script>
 </body>
 </html>

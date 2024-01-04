@@ -1,3 +1,4 @@
+
 /* Posts Page JavaScript */
 
 "use strict";
@@ -72,3 +73,4 @@ function showLogoutMessage () {
 //make GET REQUEST to post api endpoint
 //make  a loop
 //make card for each post
+
