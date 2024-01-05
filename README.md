@@ -5,6 +5,7 @@ Don't forget to read the [*MicroblogLite* API docs](http://microbloglite.us-east
 Practice and experimentation provide experience, and experience provides confidence.
 
 This project is about making a functional walled-in-garden website!
+Elora Blank, Cymone Tolbert, Abigail Thompson, and Eshet Ejigu all worked on this porject together.
 
 <img src="./images/loginPage.png" alt="screenshot of code">
 <img src="./images/signupPage.png" alt="screenshot of code">

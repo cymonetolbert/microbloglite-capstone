@@ -6,6 +6,7 @@ window.onload = function () {
     let username = getLoginData().username
     showUsername.innerHTML = username
     showUserPosts()
+    fetchBio(username)
 
     const logoutButton = document.querySelector("#logout")
     logoutButton.onclick = runLogOut
@@ -15,6 +16,28 @@ window.onload = function () {
 
     const editButton = document.querySelector("#edit")
     editButton.onclick = editAccount
+
+}
+
+function fetchBio (username) {
+    const options = {
+        headers: {
+            'Authorization': `Bearer ${getLoginData().token}`
+        }
+    }
+    fetch (`http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/${username}`, options)
+    .then(response => response.json())
+    .then(data => getBio(data))
+}
+
+function getBio (userData) {
+    let html = ""
+    const bio = userData.bio
+    if (bio.length <=  0) {
+        html += `Your life is a message to Homeworld. Make sure it is Inspiring...`
+    } html += `${bio}`
+    const showBio = document.querySelector("#bio")
+    showBio.innerHTML = html
 }
 
 function postMessage() {
