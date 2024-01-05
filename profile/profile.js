@@ -6,25 +6,61 @@ window.onload = function () {
     let username = getLoginData().username
     showUsername.innerHTML = username
     showUserPosts()
+    fetchBio(username)
+
     const logoutButton = document.querySelector("#logout")
     logoutButton.onclick = runLogOut
+
+    const postButton = document.getElementById("post")
+    postButton.onclick = postMessage
+
+    const editButton = document.querySelector("#edit")
+    editButton.onclick = editAccount
+
 }
 
-const postButton = document.getElementById("post")
-postButton.onclick = postMessage
+function fetchBio (username) {
+    const options = {
+        headers: {
+            'Authorization': `Bearer ${getLoginData().token}`
+        }
+    }
+    fetch (`http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/${username}`, options)
+    .then(response => response.json())
+    .then(data => getBio(data))
+}
+
+function getBio (userData) {
+    let html = ""
+    const bio = userData.bio
+    if (bio.length <=  0) {
+        html += `Your life is a message to Homeworld. Make sure it is Inspiring...`
+    } html += `${bio}`
+    const showBio = document.querySelector("#bio")
+    showBio.innerHTML = html
+}
 
 function postMessage() {
     const form = document.querySelector("#newPostForm")
-
     let html = `
-            <input type="text" name="" id="text">
+            <input type="text" name="" placeholder="Add Text" id="text">
             <button type="submit" id="submitButton">Make Post</button>
         `
     form.innerHTML = html
-
     console.dir(form)
-
     form.onsubmit = getNewPost
+}
+
+function editAccount() {
+    const editAccount = document.querySelector("#editAccountForm")
+    let html = `
+    <input type="text" name="" placeholder="Edit Password" id="newPass">
+    <input type="text" name="" placeholder="Edit Bio" id="newBio">
+    <input type="text" name="" placeholder="Edit Full Name" id="newName">
+    <button type="submit" id="submitButton">Confirm Changes</button>
+    `
+    editAccount.innerHTML = html
+    editAccount.onsubmit = editUserData
 }
 
 function getNewPost(event) {
@@ -44,7 +80,7 @@ function postRequest(json) {
         },
         body: JSON.stringify(json)
     }
-    fetch('https://corsproxy.io/?http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts', options)
+    fetch('http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts', options)
         .then(response => response.json())
         .then(data => console.log(data, successMessage()))
 }
@@ -53,7 +89,44 @@ function successMessage() {
     return alert("Post successfully made!")
 }
 
+function editUserData(event) {
+    event.preventDefault()
+    const editAccount = event.target.elements
+    let newPassword = editAccount.newPass.value
+    let newBio = editAccount.newBio.value
+    let newName = editAccount.newName.value
+    let editJSON = {}
 
+    if (newPassword.length > 0) {
+        editJSON.password = newPassword
+    }
+    if (newBio.length > 0) {
+        editJSON.bio = newBio
+    }
+    if (newName.length > 0) {
+        editJSON.fullName = newName
+    }
+
+    return putRequest(editJSON)
+}
+
+function putRequest(editJSON) {
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${getLoginData().token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editJSON)
+    }
+    fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/${getLoginData().username}`, options)
+        .then(response => response.json())
+        .then(data => console.log(data, successEditMessage()))
+}
+
+function successEditMessage() {
+    return alert("Account Edit Successfully Made!")
+}
 
 function runLogOut() {
     console.log("LOG ME OUT")
@@ -68,7 +141,7 @@ function showUserPosts() {
             'Authorization': `Bearer ${getLoginData().token}`
         }
     }
-    fetch("https://corsproxy.io/?http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts", options)
+    fetch("http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts", options)
         .then(response => response.json())
         .then(data => getAllPosts(data))
 }
@@ -77,20 +150,32 @@ function getAllPosts(posts) {
     let html = ""
     for (const post of posts) {
         if (post.username === getLoginData().username) {
-           html +=  showPosts(post)
+            html += showPosts(post)
         }
     }
+
     const profileDiv = document.querySelector("#profileDiv")
     profileDiv.innerHTML = html
+
+    const deleteButton = document.getElementById("deleteButton")
+    deleteButton.onclick = deletePostConfirm
 }
 
 function showPosts(post) {
     return `
    <body class="center-content">
                <div class="card w-50">
-               <div class="card-header">
-                 ${post.username}
-               </div>
+                
+                    <div class="card-header">
+                        ${post.username}
+                        <button id="deleteButton" value="${post._id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                        Delete Post </button>
+                    </div>
+                
                <div class="card-body">
                  <blockquote class="blockquote mb-0">
                    <p>${post.text}</p>
@@ -114,6 +199,31 @@ function formatDate(timestamp) {
     }
     return new Intl.DateTimeFormat(undefined, formatOptions).format(date)
 }
+
+function deletePostConfirm(event) {
+    const postId = event.target.value
+    if (window.confirm('Are you sure you want to delete this post? Hit "ok" to delete post. Hit "cancel" if you change your mind!')) {
+        deletePost(postId)
+    }
+}
+
+function deletePost(postId) {
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${getLoginData().token}`,
+            "Content-Type": "application/json"
+        }
+    }
+    fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/posts/${postId}`, options)
+        .then(response => response.json())
+        .then(data => console.log(data, successDeleteMessage()))
+}
+
+function successDeleteMessage() {
+    return alert("Post successfully deleted!")
+}
+
 //load form unpon button click/submit? or GO TO NEW PAGE to make new post?/??
 //get all information of post from form
 //do POST REQUEST to post api endpoint

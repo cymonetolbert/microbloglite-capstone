@@ -20,7 +20,7 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="./profile.css">
 
-    <title>/POSTS</title>
+    <title>/PROFILE</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload): -->
     <script src="../auth.js"></script>
@@ -69,19 +69,19 @@
                         <img src="images3/peridotDefaultPFP.png" alt="Profile Picture">
 
                         <h1 id="username"></h1>
-                        <p id="bio">Your life is a message to Homeworld. Make sure it is Inspiring...</p>
+                        <!-- <p id="bio">Your life is a message to Homeworld. Make sure it is Inspiring...</p> -->
+                        <p id="bio"></p>
                         <!-- <button onclick="editProfile()">UserName</button> -->
                         <button id="logout">Logout</button>
                         <button id="post" value="">Make New Post</button>
+                        <button id="edit" value="edit">Edit Account</button>
                         <!-- <button>See All Posts</button> -->
                     </div>
                 </div>
                 <form style="max-width: 800px;margin: 50px auto;" id="newPostForm"></form>
+                <form style="max-width: 800px;margin: 50px auto;" id="editAccountForm"></form>
 
-                <!-- <input type="text" name="" id="text"> -->
-
-                </form>
-
+                
             </div>
             <!-- 
                         </div>
